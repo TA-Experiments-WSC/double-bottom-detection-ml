@@ -1,13 +1,18 @@
-import plotly.graph_objects as go
+import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+import plotly.graph_objects as go
 
-def candlestick_plotting(data: pd.DataFrame) -> go.FigureWidget:
+def candlestick_plot(data: pd.DataFrame,
+                         title: str) -> go.FigureWidget:
     """Generates an interactive candlestick chart with dynamic y-axis adjustment.
 
     Args:
         data (pd.DataFrame): A DataFrame containing OHLC (Open, High, Low, Close) data 
             with a datetime index. 
             Expected columns: ['open', 'high', 'low', 'close']
+        
+        title (str): Chart name
 
     Returns:
         go.FigureWidget: A Plotly candlestick chart widget with dynamic y-axis scaling.
@@ -24,7 +29,7 @@ def candlestick_plotting(data: pd.DataFrame) -> go.FigureWidget:
 
     # Define the layout for the chart
     layout = dict(
-        title='Candlestick Chart',         # Title of the chart
+        title=f'Candlestick Chart: {title}',         # Title of the chart
         xaxis=dict(
             rangeslider=dict(
                 visible=False             # Disable the range slider for x-axis
@@ -60,3 +65,54 @@ def candlestick_plotting(data: pd.DataFrame) -> go.FigureWidget:
     fig.layout.on_change(zoom, 'xaxis.range')
 
     return fig
+
+def local_maxima_minima_plot(x_data: list,
+                             y_data: list,
+                             x_pol: np.ndarray, 
+                             y_pol: np.ndarray, 
+                             l_min: np.ndarray, 
+                             l_max: np.ndarray) -> None:
+    """
+    Plots the stock data and its polynomial fit, highlighting local maxima 
+    and minima.
+
+    Args:
+        x_data (list): The x-axis values for the original stock data.
+        y_data (list): The y-axis values (e.g., prices) for the original stock data.
+        x_pol (np.ndarray): The x-axis values for the polynomial fit.
+        y_pol (np.ndarray): The y-axis values for the polynomial fit.
+        l_min (np.ndarray): Indices of local minima in the polynomial fit.
+        l_max (np.ndarray): Indices of local maxima in the polynomial fit.
+
+    Returns:
+        None: The function generates and displays a plot but does not return any value.
+    """
+    
+    # Set up the figure with size, resolution, and styling.
+    plt.figure(figsize=(15, 5), dpi=120,
+               facecolor='w', edgecolor='k')
+
+    # Plot the original stock data as grey dots.
+    plt.plot(x_data, y_data, 'o',
+             markersize=2, color='grey')
+
+    # Plot the polynomial fit as a black line.
+    plt.plot(x_pol, y_pol, '-',
+             markersize=1.0, color='black')
+
+    # Highlight the local maxima with blue markers.
+    plt.plot(x_pol[l_max], y_pol[l_max],
+             "o", label="max", color='blue')
+
+    # Highlight the local minima with red markers.
+    plt.plot(x_pol[l_min], y_pol[l_min],
+             "o", label="min", color='red')
+
+    # Add a legend to label the data series in the plot.
+    plt.legend(['Stock Data',
+                'Polynomial Fit',
+                'Local Maxima',
+                'Local Minima'])
+
+    # Display the plot.
+    plt.show()
