@@ -174,22 +174,23 @@ double-bottom-detection-ml/
 
 ## 📊 Visualizations
 
+
 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; border: 1px solid black;">
     <!-- First Row -->
     <div style="border: 1px solid black; padding: 5px;">
-        <img src="\docs\results\confusion_matrix.png" alt="Graph 1" style="width: 100%; height: auto;">
+        <img src="\docs\results\confusion_matrix.png" alt="Graph 1" style="width: 50%; height: auto;">
         <p style="text-align: center;">Graph 1</p>
     </div>
     <div style="border: 1px solid black; padding: 5px;">
-        <img src="\docs\results\report.png" alt="Graph 2" style="width: 100%; height: auto;">
+        <img src="\docs\results\report.png" alt="Graph 2" style="width: 50%; height: auto;">
         <p style="text-align: center;">Graph 2</p>
     </div>
     <div style="border: 1px solid black; padding: 5px;">
-        <img src="\docs\results\feature_importance.png" alt="Graph 3" style="width: 100%; height: auto;">
+        <img src="\docs\results\feature_importance.png" alt="Graph 3" style="width: 50%; height: auto;">
         <p style="text-align: center;">Graph 3</p>
     </div>
     <div style="border: 1px solid black; padding: 5px;">
-        <img src="\docs\results\roc_curve.png" alt="Graph 4" style="width: 100%; height: auto;">
+        <img src="\docs\results\roc_curve.png" alt="Graph 4" style="width: 50%; height: auto;">
         <p style="text-align: center;">Graph 4</p>
     </div>
 </div>
