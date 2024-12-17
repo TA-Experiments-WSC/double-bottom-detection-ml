@@ -26,7 +26,6 @@ This repository provides an end-to-end solution for detecting **Double Bottom ch
   - [📑 **Table of Contents**](#-table-of-contents)
   - [🚀 **Overview**](#-overview)
   - [📊 **Dataset**](#-dataset)
-    - [Data Format](#data-format)
   - [🛠️ **Methodology**](#️-methodology)
   - [⚙️ **Requirements**](#️-requirements)
   - [💻 **Installation**](#-installation)
@@ -69,8 +68,12 @@ Key highlights:
 
 ## 📊 **Dataset**
 
-- **Source:** The dataset consists of time series data with labels indicating the presence or absence of the Double Bottom pattern.  
-- **Features:** The features were designed based on the recognition of characteristics present in the price patterns, taking into account local maxima and minima, as well as their positioning within the time window:
+- **Raw:**
+  - *benchmark_data.pkl*: Datasets with IBEX 35 OHLC data.
+  - *labels.cvs*: Data set with *Date* and *Label* columns. The *Date* column represents the first date of 30-day time windows.
+
+- **Processed:** 
+  - *features.csv*: The features were designed based on the recognition of characteristics present in the price patterns, taking into account local maxima and minima, as well as their positioning within the time window:
   
    - `Abs Extrema Duration`
    - `Low Threshold Count`
@@ -79,13 +82,7 @@ Key highlights:
    - `Min Deviation` 
    - `Min Mean`  
 
-### Data Format
-The data should be provided in CSV format with the following structure:  
-| Feature 1 | Feature 2 | ... | Label |  
-|-----------|-----------|------|-------|  
-| Value 1   | Value 2   | ...  | 0/1   |  
-
-- **Label:**  
+- **Labels:**  
    - `1`: Double Bottom pattern detected.  
    - `0`: No pattern.  
 
@@ -106,7 +103,7 @@ The project follows the standard ML workflow:
 
 ## ⚙️ **Requirements**
 
-The project uses Python 3.8+ and the following libraries:  
+The project uses Python 3.9+ and the following libraries:  
 
 - **NumPy**  
 - **Pandas**  
@@ -179,19 +176,15 @@ double-bottom-detection-ml/
     <!-- First Row -->
     <div style="border: 1px solid black; padding: 5px;">
         <img src="\docs\results\confusion_matrix.png" alt="Graph 1" style="width: 50%; height: auto;">
-        <p style="text-align: center;">Graph 1</p>
     </div>
     <div style="border: 1px solid black; padding: 5px;">
         <img src="\docs\results\report.png" alt="Graph 2" style="width: 50%; height: auto;">
-        <p style="text-align: center;">Graph 2</p>
     </div>
     <div style="border: 1px solid black; padding: 5px;">
         <img src="\docs\results\feature_importance.png" alt="Graph 3" style="width: 50%; height: auto;">
-        <p style="text-align: center;">Graph 3</p>
     </div>
     <div style="border: 1px solid black; padding: 5px;">
         <img src="\docs\results\roc_curve.png" alt="Graph 4" style="width: 50%; height: auto;">
-        <p style="text-align: center;">Graph 4</p>
     </div>
 </div>
 
