@@ -54,7 +54,7 @@ This smoothing technique allows us to distinguish Double Bottom formations from 
 
 
 <a>
-    <img src="/docs/images/overview.svg">
+    <img src="/docs/images/overview.png">
 </a>
 
 The project contemplates a standard pipeline for obtaining the results.
